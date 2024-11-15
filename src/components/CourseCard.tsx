@@ -1,6 +1,11 @@
 //import React from 'react';
 import { Star, ArrowRight } from 'lucide-react';
 
+// You can adjust the card size by modifying these areas:
+// 1. The outer div's padding or width using className
+// 2. The aspect ratio of the image container using aspect-[4/3]
+// 3. The padding in the content area (p-6)
+
 interface CourseCardProps {
   title: string;
   description: string;

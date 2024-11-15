@@ -1,5 +1,6 @@
 {
   "name": "cybernix",
+  "homepage": ".",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,8 +8,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "homepage": "."
+    "preview": "vite preview"
   },
   "dependencies": {
     "autoprefixer": "^10.4.20",
