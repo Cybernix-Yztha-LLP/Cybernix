@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import Button from './Button';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 
 const Logo = () => (
   <span className="text-2xl font-bold">

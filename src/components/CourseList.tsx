@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import CourseCard from './CourseCard';
 
 const courses = [
