@@ -16,14 +16,27 @@ const courses = [
     image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&q=80',
     rating: 4.5,
   },
-  // Add more courses as needed
+  {
+    id: 3,
+    title: 'Web Development',
+    description: 'Master modern web development',
+    image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&q=80',
+    rating: 4.7,
+  },
+  {
+    id: 4,
+    title: 'Data Science',
+    description: 'Explore the world of data analytics',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80',
+    rating: 4.6,
+  }
 ];
 
 const CourseList = () => {
   return (
-    <div className="space-y-12">
-      <h1 className="text-5xl font-bold">Our Courses</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="space-y-8">
+      <h1 className="text-4xl font-bold">Our Courses</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {courses.map((course) => (
           <CourseCard key={course.id} {...course} />
         ))}
