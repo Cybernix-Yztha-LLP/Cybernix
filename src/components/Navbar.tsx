@@ -66,7 +66,7 @@ const Navbar = () => {
         className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out transform md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
         style={{ top: '5rem' }}
       >
-        <div className="p-4 space-y-2 text-center">
+        <div className="p-4 space-y-2 text-center bg-white">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -84,6 +84,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+
       </div>
     </nav>
   );
