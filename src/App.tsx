@@ -8,6 +8,7 @@ import ServicesPage from './pages/servicesPage';
 import AboutPage from './pages/aboutPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import JoinPage from './pages/JoinPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="about" element={<AboutPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignupPage />} />
+          <Route path="join" element={<JoinPage />} />
         </Route>
       </Routes>
     </Router>
