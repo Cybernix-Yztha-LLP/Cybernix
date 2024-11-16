@@ -1,13 +1,16 @@
+// src/components/Button.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface ButtonProps {
   children: React.ReactNode;
   variant: 'primary' | 'secondary';
   href?: string;
+  to?: string;
   onClick?: () => void;
 }
 
-const Button = ({ children, variant, href, onClick }: ButtonProps) => {
+const Button = ({ children, variant, href, to, onClick }: ButtonProps) => {
   const baseStyles = "group flex items-center gap-2 px-6 py-3 rounded-full transition-colors";
   const variants = {
     primary: "bg-black text-white hover:bg-gray-800",
@@ -15,6 +18,14 @@ const Button = ({ children, variant, href, onClick }: ButtonProps) => {
   };
 
   const className = `${baseStyles} ${variants[variant]}`;
+
+  if (to) {
+    return (
+      <Link to={to} className={className}>
+        {children}
+      </Link>
+    );
+  }
 
   if (href) {
     return (

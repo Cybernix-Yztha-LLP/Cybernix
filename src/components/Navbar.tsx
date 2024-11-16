@@ -91,13 +91,13 @@ const Navbar = () => {
             </Link>
           ))}
           <div className="pt-4 mt-4 border-t border-gray-100">
-            <button
-              formAction="/login"
+            <Link
+              to="/login"
               className="flex items-center justify-center w-full px-4 py-3 text-lg font-medium text-gray-600 hover:bg-gray-50 hover:text-black rounded-lg transition-colors duration-200"
             >
               <User className="w-5 h-5 mr-3" />
               Account
-            </button>
+            </Link>
           </div>
         </div>
       </div>
