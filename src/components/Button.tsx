@@ -8,6 +8,7 @@ interface ButtonProps {
   href?: string;
   to?: string;
   onClick?: () => void;
+  width?: string;
 }
 
 const Button = ({ children, variant, href, to, onClick }: ButtonProps) => {

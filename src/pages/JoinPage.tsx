@@ -1,6 +1,6 @@
 // src/pages/JoinPage.tsx
 import { User, UserPlus } from "lucide-react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import Button from "../components/Button";
 
 const JoinPage: React.FC = () => {
