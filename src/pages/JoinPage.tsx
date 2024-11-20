@@ -13,7 +13,7 @@ const JoinPage: React.FC = () => {
         <span>Join</span>
       </div>
 
-      <h1 className="text-5xl font-bold mb-16 text-center">Join Cybernix</h1>
+      <h1 className="text-4xl font-bold mb-16 text-center">Join Cybernix</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         {/* Login Card */}

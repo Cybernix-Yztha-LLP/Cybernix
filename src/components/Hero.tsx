@@ -29,7 +29,7 @@ const Hero = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="relative">
+      <div className="relative block lg:hidden">
         {/* Background shape */}
         <div className="absolute top-32 right-0 w-3/4 h-[600px] bg-gray-100 rounded-l-[100px] -z-10" />
 
@@ -49,11 +49,11 @@ const Hero = () => {
               className="w-full h-full object-cover rounded-[40px] shadow-xl"
             />
             <div className="flex flex-wrap gap-4">
-              <Button variant="primary" href="/courses">
+              <Button variant="primary" to="/courses">
                 View courses
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="secondary" href="/join">
+              <Button variant="secondary" to="/join">
                 Join now
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>

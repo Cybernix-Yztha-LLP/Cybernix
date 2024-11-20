@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faApple, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 const SignupPage: React.FC = () => {
     return (
@@ -97,9 +98,9 @@ const SignupPage: React.FC = () => {
 
                     <p className="text-base text-gray-600 text-center">
                         Already have an account?{' '}
-                        <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                        <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">
                             Sign in
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>
