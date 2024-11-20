@@ -1,8 +1,38 @@
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginPage: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState(""); // Add message state
+  const navigate = useNavigate(); // Hook to programmatically navigate
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default form submission
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+      });
+
+      // Handle success (e.g., save token, redirect)
+      console.log(response.data); // You can save the token in local storage or context
+      setMessage("Login successful!"); // Display success message
+      setTimeout(() => {
+        navigate("/"); // Redirect to home or another page after successful login
+      }, 2000); // Wait for 2 seconds before redirecting
+    } catch (err) {
+      // Handle error
+      setError("Invalid email or password"); // Display an error message
+      console.error(err);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
       <div className="flex flex-col items-center">
@@ -13,6 +43,8 @@ const LoginPage: React.FC = () => {
         </div>
 
         <h1 className="text-5xl font-bold mb-16 text-center">Login</h1>
+
+        {error && <div className="text-red-500 mb-4">{error}</div>} {/* Display error message */}
 
         <div className="w-full max-w-xl space-y-8">
           <div className="grid grid-cols-2 gap-6">
@@ -31,13 +63,11 @@ const LoginPage: React.FC = () => {
               <div className="w-full border-t border-gray-200"></div>
             </div>
             <div className="relative flex justify-center text-base">
-              <span className="px-6 bg-white text-gray-500">
-                or continue with
-              </span>
+              <span className="px-6 bg-white text-gray-500">or continue with</span>
             </div>
           </div>
 
-          <form className="space-y-8">
+          <form className="space-y-8" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -49,7 +79,10 @@ const LoginPage: React.FC = () => {
                 type="email"
                 id="email"
                 name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Update email state
                 className="block w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                required
               />
             </div>
 
@@ -64,7 +97,10 @@ const LoginPage: React.FC = () => {
                 type="password"
                 id="password"
                 name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} // Update password state
                 className="block w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                required
               />
               <div className="text-right mt-2">
                 <Link
