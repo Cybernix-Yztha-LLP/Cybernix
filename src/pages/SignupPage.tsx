@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from '@react-oauth/google';
 import axios from "axios";
 
 const SignupPage: React.FC = () => {
@@ -37,6 +38,26 @@ const SignupPage: React.FC = () => {
     }
   };
 
+  const handleGoogleLogin = async (credentialResponse: any) => {
+    const { credential } = credentialResponse;
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/google-login", {
+        idToken: credential,
+      });
+
+      // Handle success
+      console.log(response.data);
+      setMessage("Google login successful!"); // Display success message
+      setTimeout(() => {
+        navigate("/"); // Redirect to home page after successful login
+      }, 2000); // Wait for 2 seconds before redirecting
+    } catch (err) {
+      // Handle error
+      setError("Error logging in with Google. Please try again."); // Display an error message
+      console.error(err);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
       {/* Center content */}
@@ -61,10 +82,10 @@ const SignupPage: React.FC = () => {
         <div className="w-full max-w-xl space-y-8">
           {/* Social Login Buttons */}
           <div className="grid grid-cols-2 gap-6">
-            <button className="flex items-center justify-center px-6 py-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-200 shadow-sm">
-              <FontAwesomeIcon icon={faGoogle} className="text-red-500 mr-3" />
-              <span className="text-base font-medium">Google</span>
-            </button>
+            <GoogleLogin
+              onSuccess={handleGoogleLogin}
+              onError={() => setError("Login Failed")}
+            />
             <button className="flex items-center justify-center px-6 py-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-200 shadow-sm">
               <FontAwesomeIcon icon={faApple} className="mr-3" />
               <span className="text-base font-medium">Apple</span>
@@ -73,85 +94,62 @@ const SignupPage: React.FC = () => {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
+              <div className="w-full border-t border border-gray-300" />
             </div>
-            <div className="relative flex justify-center text-base">
-              <span className="px-6 bg-white text-gray-500">or continue with</span>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-white px-2 text-gray-500">Or sign up with</span>
             </div>
           </div>
 
-          <form className="space-y-8" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="firstname" className="block text-sm font-medium text-gray-700 mb-2">
-                  First Name
-                </label>
-                <input
-                  type="text" // Corrected this line
-                  id="firstname"
-                  name="firstname"
-                  value={firstname}
-                  onChange={(e) => setFirstname(e.target.value )} // Update firstname state
-                  className="block w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                />
-              </div>
-              <div>
-                <label htmlFor="lastname" className="block text-sm font-medium text-gray-700 mb-2">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  id="lastname"
-                  name="lastname"
-                  value={lastname}
-                  onChange={(e) => setLastname(e.target.value)} // Update lastname state
-                  className="block w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)} // Update email state
-                className="block w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} // Update password state
-                className="block w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-              />
-            </div>
-
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <input
+              type="text"
+              placeholder="First Name"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded-lg p-4"
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded-lg p-4"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded-lg p-4"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded-lg p-4"
+            />
             <button
               type="submit"
-              className="w-full flex justify-center py-4 px-6 border border-transparent rounded-xl shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
+              className="w-full bg-blue-600 text-white rounded-lg py-4 hover:bg-blue-700 transition-all duration-200"
             >
-              Create Account
+              Sign Up
             </button>
           </form>
 
-          <p className="text-base text-gray-600 text-center">
-            Already have an account?{' '}
-            <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">
-              Sign in
-            </Link>
-          </p>
+          <div className="text-center">
+            <p className="text-sm text-gray-500">
+              Already have an account?{" "}
+              <Link to="/login" className="text-blue-600 hover:underline">
+                Log in
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
