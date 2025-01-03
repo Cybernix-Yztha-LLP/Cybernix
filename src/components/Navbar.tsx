@@ -7,7 +7,7 @@ import NavLink from "./NavLink";
 const navItems = [
   { name: "Home", path: "/" },
   { name: "Services", path: "/services" },
-  { name: "Courses", path: "/courses" },
+  // { name: "Courses", path: "/courses" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];

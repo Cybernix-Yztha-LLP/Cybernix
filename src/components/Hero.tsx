@@ -8,9 +8,9 @@ const Hero = () => {
         {/* Background shape */}
         <div className="absolute top-0 right-0 w-3/4 h-full bg-gray-100 rounded-l-[100px] -z-10" />
 
-        {/* Image filling the center */}
+        {/* Video filling the center */}
         <div className="flex items-center justify-center h-full">
-          <HeroImage />
+          <HeroVideo />
         </div>
 
         {/* Buttons */}
@@ -37,24 +37,20 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-            <h1 className="text-6xl font-bold leading-tight">
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                Cybernix
-              </span>
-            </h1>
+              <h1 className="text-6xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                  Cybernix
+                </span>
+              </h1>
             </div>
-            <img
-              src="https://images.unsplash.com/photo-1581472723648-909f4851d4ae?auto=format&fit=crop&q=80"
-              alt="Digital Learning"
-              className="w-full h-full object-cover rounded-[40px] shadow-xl"
-            />
+            <HeroVideo />
             <div className="flex flex-wrap gap-4">
               <Button variant="primary" to="/courses">
-                View courses
+                View Courses
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="secondary" to="/join">
-                Join now
+                Join Now
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
@@ -65,13 +61,17 @@ const Hero = () => {
   );
 };
 
-const HeroImage = () => (
+const HeroVideo = () => (
   <div className="mask1">
-    <img
-      src="https://images.unsplash.com/photo-1581472723648-909f4851d4ae?auto=format&fit=crop&q=80"
-      alt="Digital Learning"
+    <video
+      src="https://cdn.pixabay.com/video/2022/12/10/142363-780562112_large.mp4"
+      autoPlay
+      loop
+      muted
       className="w-full h-full object-cover rounded-[40px] shadow-xl"
-    />
+    >
+      Your browser does not support the video tag.
+    </video>
   </div>
 );
 
