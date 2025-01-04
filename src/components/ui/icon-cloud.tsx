@@ -45,7 +45,6 @@ export const cloudProps: Omit<ICloud, "children"> = {
 export const renderCustomIcon = (
   icon: SimpleIcon,
   theme: string,
-  imageArray?: string[],
 ) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
