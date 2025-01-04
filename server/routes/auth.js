@@ -2,8 +2,18 @@ const express = require("express");
 const db = require("../config/db");
 const { OAuth2Client } = require("google-auth-library");
 const router = express.Router();
+const rateLimit = require("express-rate-limit");
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // Add your Google Client ID
+
+// Set up rate limiter: maximum of 100 requests per 15 minutes
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+// Apply rate limiter to all routes
+router.use(limiter);
 
 // Signup route
 router.post("/signup", (req, res) => {
