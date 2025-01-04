@@ -1,9 +1,16 @@
 const express = require("express");
 const db = require("../config/db");
 const router = express.Router();
+const RateLimit = require("express-rate-limit");
+
+// Set up rate limiter: maximum of 100 requests per 15 minutes
+const limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
 
 // Get all users
-router.get("/", (req, res) => {
+router.get("/", limiter, (req, res) => {
   const query = "SELECT * FROM users";
   db.query(query, (err, results) => {
     if (err) {
@@ -14,7 +21,7 @@ router.get("/", (req, res) => {
 });
 
 // Get a user by ID
-router.get("/:id", (req, res) => {
+router.get("/:id", limiter, (req, res) => {
   const { id } = req.params;
   const query = "SELECT * FROM users WHERE id = ?";
   db.query(query, [id], (err, results) => {
