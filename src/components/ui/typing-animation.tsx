@@ -1,5 +1,4 @@
 "use client";
-
 import { cn } from "../lib/utils";
 import { motion, MotionProps } from "motion/react";
 import { useEffect, useRef, useState } from "react";
@@ -19,7 +18,7 @@ export default function TypingAnimation({
   duration = 25,
   delay = 0,
   as: Component = "div",
-  startOnView = false,
+  startOnView = true,
   ...props
 }: TypingAnimationProps) {
   const MotionComponent = motion.create(Component, {
@@ -79,7 +78,7 @@ export default function TypingAnimation({
     <MotionComponent
       ref={elementRef}
       className={cn(
-        "text-2xl  text-center font-bold leading-[2rem] tracking-[-0.02em]",
+        " py-30 text-2xl  text-center font leading-[2rem] tracking-[-0.02em]",
         className,
       )}
       {...props}
@@ -88,3 +87,6 @@ export default function TypingAnimation({
     </MotionComponent>
   );
 }
+
+
+

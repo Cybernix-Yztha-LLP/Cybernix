@@ -11,6 +11,7 @@ const HomePage = () => {
     <div className="flex flex-col min-h-screen">
       
       <Hero />
+      <ScrollBasedVelocityDemo />
       <TypingAnimationDemo />
       <Services />
       <TextRevealDemo />
