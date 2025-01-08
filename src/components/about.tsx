@@ -1,8 +1,8 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { MagicCard } from "../components/ui/magic-card";
-import IconCloud from "../components/ui/icon-cloud";
+import { MagicCard } from "./ui/magic-card";
+import IconCloud from "./ui/icon-cloud";
 
 const slugs = [
   "typescript",

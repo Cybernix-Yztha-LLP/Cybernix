@@ -4,7 +4,7 @@ import ScrollBasedVelocityDemo from "../components/velocityscroll";
 import TextRevealDemo from "../components/TextRevealDemo";
 import TypingAnimationDemo from "../components/typing-text";
 import Services from "../components/service-box";
-import About from "../components/about ";
+import About from "../components/about";
 
 const HomePage = () => {
   return (
@@ -14,7 +14,10 @@ const HomePage = () => {
       <ScrollBasedVelocityDemo />
       <TypingAnimationDemo />
       <Services />
-      <TextRevealDemo />
+      <div className="hidden md:block">
+          <TextRevealDemo />
+      </div>
+      
       <About />
       <ScrollBasedVelocityDemo />
     </div>
