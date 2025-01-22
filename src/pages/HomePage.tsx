@@ -14,10 +14,7 @@ const HomePage = () => {
       <ScrollBasedVelocityDemo />
       <TypingAnimationDemo />
       <Services />
-      <div className="hidden md:block">
-          <TextRevealDemo />
-      </div>
-      
+      <TextRevealDemo/>
       <About />
       <ScrollBasedVelocityDemo />
     </div>
