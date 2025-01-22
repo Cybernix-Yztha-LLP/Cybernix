@@ -6,6 +6,7 @@ import TypingAnimationDemo from "../components/typing-text";
 import Services from "../components/service-box";
 import About from "../components/about";
 
+
 const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen">

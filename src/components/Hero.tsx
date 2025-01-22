@@ -15,15 +15,13 @@ const Hero = () => {
 
         {/* Buttons */}
         <div className="absolute bottom-9 left-40">
-          <Button variant="secondary" to="/courses">
+          <Button variant="secondary" to="/courses" width="w-60">
             View Courses
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
-        <div className="absolute bottom-3 right-60">
-          <Button variant="secondary" to="/join">
+        <div className="absolute bottom-4 right-40">
+          <Button variant="secondary" to="/join" width="w-80">
             Join Now
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
