@@ -20,7 +20,7 @@ const Hero = () => {
           </Button>
         </div>
         <div className="absolute bottom-4 right-40">
-          <Button variant="secondary" to="/join" width="w-80">
+          <Button variant="secondary" to="/join" width="w-96">
             Join Now
           </Button>
         </div>
